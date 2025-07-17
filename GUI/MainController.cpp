@@ -42,8 +42,9 @@ std::wstring MainController::GetExeDir()
 	return m_exeDir;
 }
 
-void MainController::OnPacketLogModel(const PacketLogModel& log)
+void MainController::OnPacketLogModel(PacketLogModel& log)
 {
+	log.SetIsTypeHeader1Byte(m_setting.IsTypeHeader1Byte);
 	m_packetLogModels.push_back(log);
 	m_mainView->InsertPacketLogItem(m_packetLogModels.size() - 1, log);
 }

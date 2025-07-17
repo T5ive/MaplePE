@@ -3,10 +3,21 @@
 #include <string>
 #include <fstream>
 
-#define WSTR2ULONGPTR(value) static_cast<ULONG_PTR>(std::stoull(value, nullptr, 0))
+inline bool WSTR2BOOL(const std::wstring& value) {
+	return (!value.empty() && value != L"0");
+}
+
+inline ULONG_PTR WSTR2ULONGPTR(const std::wstring& value, ULONG_PTR defaultValue = 0) {
+	try {
+		return static_cast<ULONG_PTR>(std::stoull(value, nullptr, 0));
+	}
+	catch (...) {
+		return defaultValue;
+	}
+}
 
 #define SET_BOOL_FIELD(name) \
-    else if (key == L#name) s.name = (value == L"true" || value == L"1");
+    else if (key == L#name) s.name = WSTR2BOOL(value);
 
 #define SET_ADDR_FIELD(name) \
     else if (key == L#name) s.name = WSTR2ULONGPTR(value);
@@ -22,6 +33,7 @@ struct Setting {
 	std::wstring PacketDllName = L"Packet.dll";
 	std::wstring LoggingServerIP = L"127.0.0.1";
 	ULONG_PTR LoggingServerPort = 0xC0DE;
+	bool IsTypeHeader1Byte = false;
 
 	// Function Addr
 	ULONG_PTR CInPacketDecode1Addr = 0x00000000;
@@ -103,6 +115,7 @@ static bool LoadSetting(std::wstring dir, Setting& s) {
 		SET_WSTR_FIELD(PacketDllName)
 		SET_WSTR_FIELD(LoggingServerIP)
 		SET_ADDR_FIELD(LoggingServerPort)
+		SET_BOOL_FIELD(IsTypeHeader1Byte)
 		// Function Addr
 		SET_ADDR_FIELD(CInPacketDecode1Addr)
 		SET_ADDR_FIELD(CInPacketDecode2Addr)
@@ -147,6 +160,7 @@ static bool SaveSetting(std::wstring dir, const Setting& s) {
 	wfile << L"PacketDllName=" << s.PacketDllName << L"\n";
 	wfile << L"LoggingServerIP=" << s.LoggingServerIP << L"\n";
 	wfile << L"LoggingServerPort=" << s.LoggingServerPort << L"\n";
+	wfile << L"IsTypeHeader1Byte=" << s.IsTypeHeader1Byte << L"\n";
 	// Function Addr
 	wfile << L"CInPacketDecode1Addr=0x" << std::hex << s.CInPacketDecode1Addr << L"\n";
 	wfile << L"CInPacketDecode2Addr=0x" << std::hex << s.CInPacketDecode2Addr << L"\n";

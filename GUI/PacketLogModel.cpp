@@ -57,6 +57,10 @@ const std::wstring PacketLogModel::GetLengthStr() const {
 
 const std::wstring PacketLogModel::GetOpcodeStr() const
 {
+	if (m_isTypeHeader1Byte) {
+		uint8_t firstByte = static_cast<uint8_t>(m_opcode & 0xFF);
+		return std::to_wstring(firstByte);
+	}
 	return std::to_wstring(m_opcode);
 }
 
@@ -67,6 +71,11 @@ const std::wstring& PacketLogModel::GetData() const {
 const std::vector<PacketAction>& PacketLogModel::GetActions() const
 {
 	return m_actions;
+}
+
+void PacketLogModel::SetIsTypeHeader1Byte(bool isTypeHeader1Byte)
+{
+	m_isTypeHeader1Byte = isTypeHeader1Byte;
 }
 
 

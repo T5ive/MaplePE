@@ -13,6 +13,7 @@ namespace {
 		L"PacketDllName",
 		L"LoggingServerIP",
 		L"LoggingServerPort",
+		L"IsTypeHeader1Byte",
 		L"CInPacket::Decode1 Addr",
 		L"CInPacket::Decode2 Addr",
 		L"CInPacket::Decode4 Addr",

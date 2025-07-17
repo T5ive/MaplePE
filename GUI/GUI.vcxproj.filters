@@ -102,9 +102,6 @@
     <ClInclude Include="ColumnStyle.h">
       <Filter>Header Files\View</Filter>
     </ClInclude>
-    <ClInclude Include="JumpView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Injector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="ClientEndpoint.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpView.h">
+      <Filter>Header Files\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

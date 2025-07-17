@@ -12,7 +12,7 @@ public:
 	const Setting& GetSetting() override;
 	bool SetSetting(const Setting& s) override;
 	std::wstring GetExeDir() override;
-	void OnPacketLogModel(const PacketLogModel& log) override;
+	void OnPacketLogModel(PacketLogModel& log) override;
 	PacketLogModel GetPacketLogModel(int logID) override;
 	const std::vector<PacketLogModel>& GetPacketLogModels() override;
 	bool JumpLogItem(int logID) override;

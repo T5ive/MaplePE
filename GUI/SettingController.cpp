@@ -20,6 +20,7 @@ const std::vector<std::wstring> SettingController::Deserialize(const Setting& s)
 		s.PacketDllName,
 		s.LoggingServerIP,
 		std::to_wstring(s.LoggingServerPort),
+		std::to_wstring(s.IsTypeHeader1Byte),
 		PacketScript::Int2Hex(s.CInPacketDecode1Addr),
 		PacketScript::Int2Hex(s.CInPacketDecode2Addr),
 		PacketScript::Int2Hex(s.CInPacketDecode4Addr),
@@ -53,38 +54,40 @@ const std::vector<std::wstring> SettingController::Deserialize(const Setting& s)
 
 const Setting SettingController::Serialize(const std::vector<std::wstring>& propValues)
 {
+	size_t index = 0;
 	Setting s{
-		propValues[0], // GameProcessName
-		propValues[1], // PacketDllName
-		propValues[2], // LoggingServerIP
-		WSTR2ULONGPTR(propValues[3]),  // LoggingServerPort
-		WSTR2ULONGPTR(propValues[4]),  // CInPacketDecode1Addr
-		WSTR2ULONGPTR(propValues[5]),  // CInPacketDecode2Addr
-		WSTR2ULONGPTR(propValues[6]),  // CInPacketDecode4Addr
-		WSTR2ULONGPTR(propValues[7]),  // CInPacketDecode8Addr
-		WSTR2ULONGPTR(propValues[8]),  // CInPacketDecodeStrAddr
-		WSTR2ULONGPTR(propValues[9]),  // CInPacketDecodeBufferAddr
-		WSTR2ULONGPTR(propValues[10]), // COutPacketEncode1Addr
-		WSTR2ULONGPTR(propValues[11]), // COutPacketEncode2Addr
-		WSTR2ULONGPTR(propValues[12]), // COutPacketEncode4Addr
-		WSTR2ULONGPTR(propValues[13]), // COutPacketEncode8Addr
-		WSTR2ULONGPTR(propValues[14]), // COutPacketEncodeStrAddr
-		WSTR2ULONGPTR(propValues[15]), // COutPacketEncodeBufferAddr
-		WSTR2ULONGPTR(propValues[16]), // COutPacketMakeBufferListAddr
-		WSTR2ULONGPTR(propValues[17]), // CClientSocketProcessPacketAddr
-		WSTR2ULONGPTR(propValues[18]), // CClientSocketSendPacketAddr
-		propValues[19], // CInPacketDecode1GenCode
-		propValues[20], // CInPacketDecode2GenCode
-		propValues[21], // CInPacketDecode4GenCode
-		propValues[22], // CInPacketDecode8GenCode
-		propValues[23], // CInPacketDecodeStrGenCode
-		propValues[24], // CInPacketDecodeBufferGenCode
-		propValues[25], // COutPacketEncode1GenCode
-		propValues[26], // COutPacketEncode2GenCode
-		propValues[27], // COutPacketEncode4GenCode
-		propValues[28], // COutPacketEncode8GenCode
-		propValues[29], // COutPacketEncodeStrGenCode
-		propValues[30], // COutPacketEncodeBufferGenCode
+		propValues[index], // GameProcessName
+		propValues[++index], // PacketDllName
+		propValues[++index], // LoggingServerIP
+		WSTR2ULONGPTR(propValues[++index]),  // LoggingServerPort
+		WSTR2BOOL(propValues[++index]),	   // IsTypeHeader1Byte
+		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode1Addr
+		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode2Addr
+		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode4Addr
+		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode8Addr
+		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecodeStrAddr
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecodeBufferAddr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode1Addr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode2Addr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode4Addr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode8Addr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncodeStrAddr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncodeBufferAddr
+		WSTR2ULONGPTR(propValues[++index]), // COutPacketMakeBufferListAddr
+		WSTR2ULONGPTR(propValues[++index]), // CClientSocketProcessPacketAddr
+		WSTR2ULONGPTR(propValues[++index]), // CClientSocketSendPacketAddr
+		propValues[++index], // CInPacketDecode1GenCode
+		propValues[++index], // CInPacketDecode2GenCode
+		propValues[++index], // CInPacketDecode4GenCode
+		propValues[++index], // CInPacketDecode8GenCode
+		propValues[++index], // CInPacketDecodeStrGenCode
+		propValues[++index], // CInPacketDecodeBufferGenCode
+		propValues[++index], // COutPacketEncode1GenCode
+		propValues[++index], // COutPacketEncode2GenCode
+		propValues[++index], // COutPacketEncode4GenCode
+		propValues[++index], // COutPacketEncode8GenCode
+		propValues[++index], // COutPacketEncodeStrGenCode
+		propValues[++index], // COutPacketEncodeBufferGenCode
 	};
 	return s;
 }
@@ -97,9 +100,6 @@ const std::vector<std::wstring> SettingController::GetSettings()
 
 bool SettingController::SetSetting(const std::vector<std::wstring> propValues)
 {
-	if (propValues.size() != 31) {
-		return false;
-	}
 	const Setting s = Serialize(propValues);
 	return m_mainControllerImpl->SetSetting(s);
 }

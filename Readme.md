@@ -57,7 +57,7 @@ A 32-bit MapleStory Packet Editor that can parse packet structures and send cust
 - `MaplePE.exe` runs a UDP server to receive packet information
 - Inject `Packet.dll` into target process using `CreateRemoteThread` with `LoadLibraryW`
 - `Packet.dll` hooks functions related to writing and reading packets to detect packet structures
-- `Packet.dll` uses a UDP client to send packet information that includes packet structures and the client addr
+- `Packet.dll` uses a UDP client to send packet information that includes packet structures and the return address
 - `MaplePE.exe` logs and formats packet structures as list items
 - `MaplePE.exe` allows users to edit packet data and send it to the client
 - Before sending a packet via `MaplePE.exe`, the server must respond with at least one packet to ensure that the CClientSocket instance can be correctly specified

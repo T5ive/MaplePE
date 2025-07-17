@@ -33,6 +33,7 @@
 *.app
 
 # Temp file
+*.APS
 *.txt
 !detours.txt
 .vs
