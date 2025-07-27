@@ -46,7 +46,7 @@ void LoggingClient::HandleDatagram(const void* buf, size_t bufLen, const std::st
 		oPacket.m_aSendBuff = new uint8_t[info.Payload.size()];
 		oPacket.m_uOffset = info.Payload.size();
 		memcpy(oPacket.m_aSendBuff, info.Payload.data(), info.Payload.size());
-		COutPacket::SetActions(info.Actions);
+		COutPacket::SetActions((void*)&oPacket, info.Actions);
 		Router::SendPacket(&oPacket);
 		delete[] oPacket.m_aSendBuff;
 	}

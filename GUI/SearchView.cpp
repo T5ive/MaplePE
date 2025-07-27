@@ -115,12 +115,13 @@ void SearchView::OnNMDblclkPacketLogList(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	// TODO: Add your control notification handler code here
-	int nSelectedID = pNMItemActivate->iItem;
-	if (nSelectedID == -1) {
+	int nSelectedIndex = pNMItemActivate->iItem;
+	if (nSelectedIndex == -1) {
 		MBError(L"Please select one row");
 		return;
 	}
-	m_searchController->JumpLogItem(nSelectedID);
+	int nSelectedID = _wtoi(m_packetLogSearchListCtrl.GetItemText(nSelectedIndex,0));
+	m_searchController->JumpLogItem((nSelectedID));
 	*pResult = 0;
 }
 

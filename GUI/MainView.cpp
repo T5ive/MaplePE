@@ -177,11 +177,12 @@ void MainView::OnNMDblclkPacketLogList(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	// TODO: Add your control notification handler code here
-	int nSelectedID = pNMItemActivate->iItem;
-	if (nSelectedID == -1) {
+	int nSelectedIndex = pNMItemActivate->iItem;
+	if (nSelectedIndex == -1) {
 		MBError(L"Please select one row");
 		return;
 	}
+	int nSelectedID = _wtoi(m_packetLogListCtrl.GetItemText(nSelectedIndex, 0));
 	this->CreateFormatView(nSelectedID);
 	*pResult = 0;
 }
@@ -198,12 +199,13 @@ void MainView::OnBnClickedPatchButton()
 void MainView::OnBnClickedEditButton()
 {
 	// TODO: Add your control notification handler code here
-	int nSelectedID = m_packetLogListCtrl.GetNextItem(-1, LVNI_SELECTED);
-	if (nSelectedID == -1)
+	int nSelectedIndex = m_packetLogListCtrl.GetNextItem(-1, LVNI_SELECTED);
+	if (nSelectedIndex == -1)
 	{
 		MBError(L"Please select one row");
 		return;
 	}
+	int nSelectedID = _wtoi(m_packetLogListCtrl.GetItemText(nSelectedIndex, 0));
 	this->CreateFormatView(nSelectedID);
 }
 

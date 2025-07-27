@@ -15,12 +15,11 @@ typedef struct {
 } InPacket;
 #pragma pack(pop)
 
-
 namespace CInPacket {
 
-	const std::vector<PacketAction>& GetActions();
+	std::vector<PacketAction>& GetActions(void* key);
 
-	void ClearActions();
+	void DeleteActions(void* key);
 
 	// GMS95 unsigned __int8 __thiscall CInPacket::Decode1(CInPacket *this)
 	extern uint8_t(__thiscall* Decode1)(void* ecx);

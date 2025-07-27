@@ -12,11 +12,11 @@ typedef struct {
 
 namespace COutPacket {
 
-	std::vector<PacketAction>& GetActions();
+	std::vector<PacketAction>& GetActions(void* key);
 
-	void SetActions(const std::vector<PacketAction>& actions);
+	void DeleteActions(void* key);
 
-	void ClearActions();
+	void SetActions(void* key, const std::vector<PacketAction>& actions);
 
 	// GMS95 void __thiscall COutPacket::Encode1(COutPacket *this, unsigned __int8 n)
 	extern void(__thiscall* Encode1)(void* ecx, uint8_t n);

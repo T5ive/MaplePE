@@ -44,6 +44,8 @@ namespace Router {
 	void SendPacket(OutPacket* oPacket) {
 		if (gClientSocketPtr == nullptr) {
 			DEBUGW(L"ClientSocket has not been specified");
+			void* key = (void*)oPacket;
+			COutPacket::DeleteActions(key);
 			return;
 		}
 		CClientSocket::SendPacket(gClientSocketPtr, oPacket);

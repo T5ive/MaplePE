@@ -157,9 +157,6 @@ bool FormatController::EncodeValue(int row, const std::wstring& text, std::wstri
 	case PacketActionType::DecodeBuffer:
 	case PacketActionType::EncodeBuffer: {
 		size_t uSize = pFormat->GetSize();
-		if (uSize != PacketScript::kCharacterNameLength && uSize != PacketScript::kFileTimeLength) {
-			return false;
-		}
 		PacketScript::EncodeBuffer(buffer, text, uSize);
 		break;
 	}
@@ -216,9 +213,6 @@ bool FormatController::DecodeSegment(int row, const std::wstring& text, std::wst
 	case PacketActionType::DecodeBuffer:
 	case PacketActionType::EncodeBuffer: {
 		size_t uSize = pFormat->GetSize();
-		if (uSize != PacketScript::kCharacterNameLength && uSize != PacketScript::kFileTimeLength) {
-			return false;
-		}
 		value = PacketScript::DecodeBuffer(buffer, pos, uSize);
 		break;
 	}
