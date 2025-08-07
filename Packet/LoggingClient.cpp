@@ -1,11 +1,6 @@
+#include "pch.h"
 #include "LoggingClient.h"
 #include "Router.h"
-
-#ifdef _DEBUG
-#pragma comment(lib, "CommonD.lib")
-#else
-#pragma comment(lib, "Common.lib")
-#endif
 
 LoggingClient::LoggingClient(const std::wstring& serverIP, uint16_t serverPort) :UDPClient(serverIP, serverPort)
 {

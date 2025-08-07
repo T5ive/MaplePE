@@ -1,20 +1,12 @@
 // FormatView.cpp : implementation file
 //
-#include <vector>
+#include "pch.h"
 #include "FormatView.h"
 #include "resource.h"
 #include "ColumnStyle.h"
-#include "Common.h"
-
-#ifdef _DEBUG
-#pragma comment(lib, "GridCtrlD.lib")
-#else
-#pragma comment(lib, "GridCtrl.lib")
-#endif
 
 namespace {
 	const COLORREF kEditableCellColor = RGB(220, 255, 220);
-
 }
 
 // FormatView dialog
@@ -219,4 +211,3 @@ void FormatView::OnBnClickedSendButton()
 	}
 	MBInfo(L"Send data ok");
 }
-

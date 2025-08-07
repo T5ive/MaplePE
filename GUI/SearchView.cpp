@@ -1,10 +1,9 @@
 // SearchView.cpp : implementation file
 //
-
+#include "pch.h"
 #include "SearchView.h"
 #include "ColumnStyle.h"
 #include "resource.h"
-
 
 // SearchView dialog
 
@@ -120,8 +119,7 @@ void SearchView::OnNMDblclkPacketLogList(NMHDR* pNMHDR, LRESULT* pResult)
 		MBError(L"Please select one row");
 		return;
 	}
-	int nSelectedID = _wtoi(m_packetLogSearchListCtrl.GetItemText(nSelectedIndex,0));
+	int nSelectedID = _wtoi(m_packetLogSearchListCtrl.GetItemText(nSelectedIndex, 0));
 	m_searchController->JumpLogItem((nSelectedID));
 	*pResult = 0;
 }
-

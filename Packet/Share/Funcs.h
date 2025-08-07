@@ -12,5 +12,5 @@ inline void SADDR(T** ppPointer, ULONG_PTR uAddress) {
 // Usage: SHOOK(ture,&_FuncName,FuncName_Hook);
 template <typename T>
 inline BOOL SHOOK(BOOL bInstall, T** ppPointer, PVOID pDetour) {
-	 return SetHook(bInstall, reinterpret_cast<void**>(ppPointer), pDetour);
+	return SetHook(bInstall, reinterpret_cast<void**>(ppPointer), pDetour);
 }

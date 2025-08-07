@@ -1,12 +1,10 @@
 #pragma once
-#include <vector>
-#include <string>
 
-static std::vector<int> GetColumnWidths(int totalWidth,const std::vector<float>& ratios) {
+static std::vector<int> GetColumnWidths(int totalWidth, const std::vector<float>& ratios) {
 	size_t columnLength = ratios.size();
 	std::vector<int> columnWidths(columnLength);
 	int usedWidth = 0;
-	for (size_t i = 0; i< columnLength; i++)
+	for (size_t i = 0; i < columnLength; i++)
 	{
 		int columnWidth = 0;
 		if (i == columnLength - 1) {

@@ -1,9 +1,6 @@
+#include "pch.h"
 #include "CClientSocket.h"
 #include "Router.h"
-
-#include<intrin.h>
-#pragma intrinsic(_ReturnAddress)
-
 
 namespace CClientSocket {
 

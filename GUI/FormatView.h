@@ -1,9 +1,7 @@
 #pragma once
-#include "framework.h"
 #include "Model.h"
 #include "BaseView.h"
 #include "GenCodeView.h"
-#include "GridCtrl.h"
 #include "IMainController.h"
 #include "FormatController.h"
 

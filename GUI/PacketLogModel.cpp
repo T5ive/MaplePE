@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "PacketLogModel.h"
-
-
 
 PacketLogModel::PacketLogModel(PacketInfo& info)
 {
@@ -77,7 +76,6 @@ void PacketLogModel::SetIsTypeHeader1Byte(bool isTypeHeader1Byte)
 {
 	m_isTypeHeader1Byte = isTypeHeader1Byte;
 }
-
 
 void PacketLogModel::SetData(const std::wstring& data)
 {

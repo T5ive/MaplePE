@@ -1,15 +1,7 @@
+#include "pch.h"
 #include "PatchView.h"
 #include "PatchController.h"
 #include "Injector.h"
-
-
-#include "Common.h"
-#ifdef _DEBUG
-#pragma comment(lib, "CommonD.lib")
-#else
-#pragma comment(lib, "Common.lib")
-#endif
-
 
 PatchController::PatchController(IMainController* mainControllerImpl, PatchView* view)
 {

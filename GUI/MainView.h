@@ -1,5 +1,4 @@
 #pragma once
-#include "framework.h"
 #include "Model.h"
 #include "BaseView.h"
 #include "SettingView.h"

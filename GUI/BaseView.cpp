@@ -1,6 +1,5 @@
-#include "framework.h"
+#include "pch.h"
 #include "BaseView.h"
-
 
 BaseView::BaseView(std::wstring title)
 {

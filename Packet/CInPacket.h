@@ -1,5 +1,4 @@
 #pragma once
-#include "Common.h"
 
 #pragma pack(push, 1)
 typedef struct {
@@ -46,4 +45,3 @@ namespace CInPacket {
 	void __fastcall DecodeBuffer_Hook(void* ecx, void* edx, uint8_t* p, size_t uSize);
 
 }
-

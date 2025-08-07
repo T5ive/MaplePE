@@ -1,6 +1,6 @@
 // SettingView.cpp : implementation file
 //
-
+#include "pch.h"
 #include "SettingView.h"
 #include "resource.h"
 

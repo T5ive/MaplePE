@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+
 class PacketFormatModel {
 public:
 	PacketFormatModel() = default;

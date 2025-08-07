@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "PacketFormatModel.h"
 
 PacketFormatModel::PacketFormatModel(size_t index, std::wstring retAddr, uint8_t actionType, std::wstring actionText, size_t size, std::wstring value, std::wstring segment)
@@ -74,4 +75,3 @@ void PacketFormatModel::SetComment(const std::wstring& comment)
 {
 	m_comment = comment;
 }
-

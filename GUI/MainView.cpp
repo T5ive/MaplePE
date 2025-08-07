@@ -1,5 +1,6 @@
 // MainView.cpp : implementation file
 //
+#include "pch.h"
 #include "MainView.h"
 #include "FormatView.h"
 #include "ColumnStyle.h"

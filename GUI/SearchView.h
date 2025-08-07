@@ -1,5 +1,4 @@
 #pragma once
-#include "framework.h"
 #include "BaseView.h"
 #include "IMainController.h"
 #include "SearchController.h"

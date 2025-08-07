@@ -29,6 +29,9 @@
     <ClInclude Include="WSAData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PacketFormat.cpp" />
+    <ClCompile Include="PacketScript.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="UDPClient.cpp" />
     <ClCompile Include="UDPServer.cpp" />

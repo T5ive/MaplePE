@@ -1,5 +1,6 @@
 // PatchView.cpp : implementation file
 //
+#include "pch.h"
 #include "PatchView.h"
 #include "resource.h"
 

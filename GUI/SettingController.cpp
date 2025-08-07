@@ -1,6 +1,6 @@
+#include "pch.h"
 #include "SettingView.h"
 #include "SettingController.h"
-
 
 SettingController::SettingController(IMainController* mainControllerImpl, SettingView* view)
 {

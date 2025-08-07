@@ -1,5 +1,5 @@
+#include "pch.h"
 #include "Hook.h"
-#include "Common.h"
 #include "CClientSocket.h"
 #include "Router.h"
 

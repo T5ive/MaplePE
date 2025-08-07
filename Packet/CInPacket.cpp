@@ -1,8 +1,5 @@
-#include <map>
+#include "pch.h"
 #include "CInPacket.h"
-
-#include<intrin.h>
-#pragma intrinsic(_ReturnAddress)
 
 namespace {
 	static std::map<void*, std::vector<PacketAction>> gActionsMap;
@@ -54,23 +51,29 @@ namespace CInPacket {
 
 	uint64_t(__thiscall* Decode8)(void* ecx) = nullptr;
 	uint64_t __fastcall Decode8_Hook(void* ecx) {
-		auto& gActions = GetActions(ecx);
-		gActions.push_back(PacketAction{ PacketActionType::Decode8,8,(uint32_t)_ReturnAddress() });
+		if (IsPayload(ecx)) {
+			auto& gActions = GetActions(ecx);
+			gActions.push_back(PacketAction{ PacketActionType::Decode8,8,(uint32_t)_ReturnAddress() });
+		}
 		return Decode8(ecx);
 	}
 
 	char** (__thiscall* DecodeStr)(void* ecx, char** result) = nullptr;
 	char** __fastcall DecodeStr_Hook(void* ecx, void* edx, char** result) {
-		auto& gActions = GetActions(ecx);
-		gActions.push_back(PacketAction{ PacketActionType::DecodeStr,0,(uint32_t)_ReturnAddress() });
+		if (IsPayload(ecx)) {
+			auto& gActions = GetActions(ecx);
+			gActions.push_back(PacketAction{ PacketActionType::DecodeStr,0,(uint32_t)_ReturnAddress() });
+		}
 		return DecodeStr(ecx, result);
 	}
 
 	void(__thiscall* DecodeBuffer)(void* ecx, uint8_t* p, size_t uSize) = nullptr;
 	void __fastcall DecodeBuffer_Hook(void* ecx, void* edx, uint8_t* p, size_t uSize) {
-		auto& gActions = GetActions(ecx);
-		gActions.push_back(PacketAction{ PacketActionType::DecodeBuffer,uSize,(uint32_t)_ReturnAddress() });
-		DecodeBuffer(ecx, p, uSize);
+		if (IsPayload(ecx)) {
+			auto& gActions = GetActions(ecx);
+			gActions.push_back(PacketAction{ PacketActionType::DecodeBuffer,uSize,(uint32_t)_ReturnAddress() });
+		}
+		return DecodeBuffer(ecx, p, uSize);
 	}
 
 }

@@ -1,6 +1,6 @@
 // GenCodeView.cpp : implementation file
 //
-
+#include "pch.h"
 #include "GenCodeView.h"
 #include "resource.h"
 

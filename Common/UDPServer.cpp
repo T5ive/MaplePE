@@ -95,6 +95,3 @@ bool UDPServer::Notify(const void* buf, size_t bufLen, const std::string& client
 	}
 	return true;
 }
-
-
-

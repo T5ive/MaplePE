@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Router.h"
 #include "CClientSocket.h"
 #include "LoggingClient.h"

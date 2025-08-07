@@ -1,5 +1,5 @@
+#include "pch.h"
 #include "Injector.h"
-#include <tlhelp32.h>
 
 namespace {
 

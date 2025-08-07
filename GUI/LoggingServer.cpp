@@ -1,11 +1,6 @@
+#include "pch.h"
 #include "UDPServer.h"
 #include "LoggingServer.h"
-
-#ifdef _DEBUG
-#pragma comment(lib, "CommonD.lib")
-#else
-#pragma comment(lib, "Common.lib")
-#endif
 
 LoggingServer::LoggingServer(IMainController* mainControllerImpl) :UDPServer()
 {
@@ -84,7 +79,3 @@ bool LoggingServer::sendPacketInfo(const PacketLogModel& log, const ClientEndpoi
 	std::vector<uint8_t> buffer = PacketFormat::Serialize(info);
 	return this->Notify(buffer.data(), buffer.size(), clientEndpoint.IP, clientEndpoint.Port);
 }
-
-
-
-

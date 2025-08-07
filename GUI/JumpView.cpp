@@ -1,7 +1,7 @@
 // JumpView.cpp : implementation file
 //
 
-
+#include "pch.h"
 #include "JumpView.h"
 #include "resource.h"
 
