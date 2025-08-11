@@ -34,7 +34,7 @@ namespace Router {
 		gLoggingClient->SendPacketInfo(info);
 	}
 
-	void ProcessPacket(InPacket* iPacket) {
+	void ProcessPacket(void* iPacket) {
 		if (gClientSocketPtr == nullptr) {
 			DEBUGW(L"ClientSocket has not been specified");
 			return;
@@ -42,11 +42,10 @@ namespace Router {
 		CClientSocket::ProcessPacket_Hook(gClientSocketPtr, nullptr, iPacket);
 	}
 
-	void SendPacket(OutPacket* oPacket) {
+	void SendPacket(void* oPacket) {
 		if (gClientSocketPtr == nullptr) {
 			DEBUGW(L"ClientSocket has not been specified");
-			void* key = (void*)oPacket;
-			COutPacket::DeleteActions(key);
+			COutPacket::DeleteActions(oPacket);
 			return;
 		}
 		CClientSocket::SendPacket(gClientSocketPtr, oPacket);

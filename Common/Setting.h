@@ -12,6 +12,10 @@ struct Setting {
 	ULONG_PTR LoggingServerPort = 0xC0DE;
 	bool IsTypeHeader1Byte = false;
 
+	// Filter Opcodes
+	std::wstring CInPacketFilterOpcodes = L"";
+	std::wstring COutPacketFilterOpcodes = L"";
+
 	// Function Addr
 	ULONG_PTR CInPacketDecode1Addr = 0x00000000;
 	ULONG_PTR CInPacketDecode2Addr = 0x00000000;

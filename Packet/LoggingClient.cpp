@@ -27,7 +27,7 @@ void LoggingClient::HandleDatagram(const void* buf, size_t bufLen, const std::st
 	PacketInfo info = PacketFormat::Deserialize(buffer);
 	if (info.IsInPacket) {
 		InPacket iPacket{};
-		iPacket.m_nState = 0x02;
+		iPacket.m_nState = 2;
 		iPacket.m_uDataLen = static_cast<uint16_t>(info.Payload.size());
 		iPacket.m_uLength = Router::kHeaderLength + iPacket.m_uDataLen;
 		iPacket.m_aRecvBuff = new uint8_t[iPacket.m_uLength];
@@ -41,7 +41,7 @@ void LoggingClient::HandleDatagram(const void* buf, size_t bufLen, const std::st
 		oPacket.m_aSendBuff = new uint8_t[info.Payload.size()];
 		oPacket.m_uOffset = info.Payload.size();
 		memcpy(oPacket.m_aSendBuff, info.Payload.data(), info.Payload.size());
-		COutPacket::SetActions((void*)&oPacket, info.Actions);
+		COutPacket::SetActions(&oPacket, info.Actions);
 		Router::SendPacket(&oPacket);
 		delete[] oPacket.m_aSendBuff;
 	}

@@ -48,6 +48,9 @@ bool LoadSetting(std::wstring dir, Setting& s) {
 		SET_WSTR_FIELD(LoggingServerIP)
 		SET_ADDR_FIELD(LoggingServerPort)
 		SET_BOOL_FIELD(IsTypeHeader1Byte)
+		// Filter Opcodes
+		SET_WSTR_FIELD(CInPacketFilterOpcodes)
+		SET_WSTR_FIELD(COutPacketFilterOpcodes)
 		// Function Addr
 		SET_ADDR_FIELD(CInPacketDecode1Addr)
 		SET_ADDR_FIELD(CInPacketDecode2Addr)
@@ -93,6 +96,9 @@ bool SaveSetting(std::wstring dir, const Setting& s) {
 	wfile << L"LoggingServerIP=" << s.LoggingServerIP << L"\n";
 	wfile << L"LoggingServerPort=" << s.LoggingServerPort << L"\n";
 	wfile << L"IsTypeHeader1Byte=" << s.IsTypeHeader1Byte << L"\n";
+	// Filter Opcodes
+	wfile << L"CInPacketFilterOpcodes=" << s.CInPacketFilterOpcodes << L"\n";
+	wfile << L"COutPacketFilterOpcodes=" << s.COutPacketFilterOpcodes << L"\n";
 	// Function Addr
 	wfile << L"CInPacketDecode1Addr=0x" << std::hex << s.CInPacketDecode1Addr << L"\n";
 	wfile << L"CInPacketDecode2Addr=0x" << std::hex << s.CInPacketDecode2Addr << L"\n";

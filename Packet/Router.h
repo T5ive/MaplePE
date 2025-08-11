@@ -11,6 +11,6 @@ namespace Router {
 	void Init(const std::wstring& serverIP, const uint16_t serverPort);
 	void Free();
 	void SendPacketInfo(PacketInfo& info);
-	void ProcessPacket(InPacket* iPacket);
-	void SendPacket(OutPacket* oPacket);
+	void ProcessPacket(void* iPacket);
+	void SendPacket(void* oPacket);
 }

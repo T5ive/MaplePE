@@ -21,6 +21,8 @@ const std::vector<std::wstring> SettingController::Deserialize(const Setting& s)
 		s.LoggingServerIP,
 		std::to_wstring(s.LoggingServerPort),
 		std::to_wstring(s.IsTypeHeader1Byte),
+		s.CInPacketFilterOpcodes,
+		s.COutPacketFilterOpcodes,
 		PacketScript::Int2Hex(s.CInPacketDecode1Addr),
 		PacketScript::Int2Hex(s.CInPacketDecode2Addr),
 		PacketScript::Int2Hex(s.CInPacketDecode4Addr),
@@ -56,16 +58,18 @@ const Setting SettingController::Serialize(const std::vector<std::wstring>& prop
 {
 	size_t index = 0;
 	Setting s{
-		propValues[index], // GameProcessName
-		propValues[++index], // PacketDllName
-		propValues[++index], // LoggingServerIP
-		WSTR2ULONGPTR(propValues[++index]),  // LoggingServerPort
-		WSTR2BOOL(propValues[++index]),	   // IsTypeHeader1Byte
-		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode1Addr
-		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode2Addr
-		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode4Addr
-		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecode8Addr
-		WSTR2ULONGPTR(propValues[++index]),  // CInPacketDecodeStrAddr
+		propValues[index],					// GameProcessName
+		propValues[++index],				// PacketDllName
+		propValues[++index],				// LoggingServerIP
+		WSTR2ULONGPTR(propValues[++index]), // LoggingServerPort
+		WSTR2BOOL(propValues[++index]),		// IsTypeHeader1Byte
+		propValues[++index],				// CInPacketFilterOpcodes
+		propValues[++index],				// COutPacketFilterOpcodes
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecode1Addr
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecode2Addr
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecode4Addr
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecode8Addr
+		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecodeStrAddr
 		WSTR2ULONGPTR(propValues[++index]), // CInPacketDecodeBufferAddr
 		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode1Addr
 		WSTR2ULONGPTR(propValues[++index]), // COutPacketEncode2Addr

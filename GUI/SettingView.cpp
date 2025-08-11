@@ -14,6 +14,8 @@ namespace {
 		L"LoggingServerIP",
 		L"LoggingServerPort",
 		L"IsTypeHeader1Byte",
+		L"CInPacketFilterOpcodes (optional)",
+		L"COutPacketFilterOpcodes (optional)",
 		L"CInPacket::Decode1 Addr",
 		L"CInPacket::Decode2 Addr",
 		L"CInPacket::Decode4 Addr",

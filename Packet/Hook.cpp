@@ -44,6 +44,9 @@ namespace Hook {
 				return;
 			}
 		}
+		// Filter Opcodes
+		CInPacket::InitFilterOpcodeSet(s.CInPacketFilterOpcodes);
+		COutPacket::InitFilterOpcodeSet(s.COutPacketFilterOpcodes);
 		// CInPacket::Decode1
 		SADDR(&CInPacket::Decode1, s.CInPacketDecode1Addr);
 		SHOOK(true, &CInPacket::Decode1, CInPacket::Decode1_Hook);

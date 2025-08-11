@@ -7,6 +7,7 @@ A 32-bit MapleStory Packet Editor that can parse packet structures and send cust
 - Search or jump by ID to quickly locate a packet item
 - Edit packet data and send it to the client
 - Generate simple code from package structures
+- Filter specific opcodes to avoid logging certain packets (e.g. 1,2,3,4)
 
 ## How to use
 ### Ready

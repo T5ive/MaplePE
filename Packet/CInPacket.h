@@ -5,7 +5,7 @@ typedef struct {
 	uint32_t m_bLoopback;
 	uint32_t m_nState;
 	uint8_t* m_aRecvBuff; // Header(4) + Payload(Opcode(2) + Data(uint8_t...))
-	uint16_t m_uLength;  // Payload length
+	uint16_t m_uLength;   // Payload length
 	uint16_t m_uRawSeq;
 	uint16_t m_uDataLen;
 	uint8_t	 m_uPadding1;
@@ -16,7 +16,11 @@ typedef struct {
 
 namespace CInPacket {
 
-	std::vector<PacketAction>& GetActions(void* key);
+	void InitFilterOpcodeSet(std::wstring& opcodes);
+
+	bool IsFilterOpcode(uint16_t opcode);
+
+	std::vector<PacketAction>* GetActions(void* key);
 
 	void DeleteActions(void* key);
 
